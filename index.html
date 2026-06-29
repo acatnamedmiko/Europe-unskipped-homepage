@@ -60,4 +60,66 @@
 
         <script src="code.js"></script>
     </body>
+</html><!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Europe Unskipped</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="background">
+
+        <header class="toolbar">
+            <div style="display:flex; align-items:center; gap:16px;"><div class="logo-wrapper" onclick="toggleMenu()" title="Open Navigation Menu" aria-label="Toggle navigation">
+                <div class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="star-grid" aria-hidden="true">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <h1 class="h1">Europe Unskipped</h1></div>
+        </header>
+
+        <div class="particles" id="particles"></div>
+
+        <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+        <nav id="menuDrawer" class="menu-drawer">
+            <div class="drawer-header">
+                <h2>Navigation</h2>
+                <button class="close-btn" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Homepage <span class="nav-hint">Go</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="history.html">History <span class="nav-hint">View</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="partners.html">Partners <span class="nav-hint">Open</span></a>
+                </li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <section class="glass" style="display:flex; gap:24px; align-items:center; justify-content:space-between;">
+                <div>
+                    <h2 class="undermenu">Europe Unskipped</h2>
+                    <p class="welcome-text">A vivid community for friends across Europe. We host events, gaming nights and more.</p>
+                    <div style="margin-top:18px;"><a class="cta" href="https://discord.gg/pQHX366wWW" target="_blank" rel="noopener noreferrer">Join our Discord</a></div>
+                </div>
+                <div style="min-width:320px;">
+                    <div class="glass" style="padding:12px;">
+                        <div class="discord-stats" id="discordStats">
+                            <div style="display:flex; gap:12px;"><strong>Members</strong><span id="totalMembers">—</span></div>
+                            <div style="display:flex; gap:12px;"><strong>Online</strong><span id="onlineMembers">—</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="code.js"></script>
+    </body>
 </html>
