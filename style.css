@@ -274,3 +274,47 @@ body.menu-open .main-content {
     background: rgba(255,255,255,0.015);
     border-radius: 10px; padding: 18px; border:1px solid rgba(255,255,255,0.02); box-shadow: 0 8px 30px rgba(2,6,23,0.35);
 }
+
+/* Mobile / Small screens adjustments */
+@media (max-width: 600px) {
+    .toolbar {
+        left: 12px;
+        right: 12px;
+        transform: none;
+        width: calc(100% - 24px);
+        max-width: none;
+        border-radius: 10px;
+        padding: 10px;
+        height: 64px;
+    }
+    .logo-wrapper { width: 64px; height: 64px; border-radius: 10px; }
+    .menu-icon span { height: 4px; }
+    .h1 { font-size: 1.1rem; }
+    .main-content { margin-top: 110px; margin-left: 12px; padding: 16px; }
+    .menu-drawer {
+        left: 0;
+        top: 0;
+        width: 86%;
+        max-width: 320px;
+        height: 100%;
+        border-radius: 0;
+        transform: translateX(-110%);
+        padding-top: 56px;
+    }
+    .menu-drawer.open { transform: translateX(0); }
+    body.menu-open .main-content { margin-left: 12px; }
+    .menu-overlay.open { background: rgba(3,6,18,0.6); }
+    .particles { display: none; }
+    .star-grid { transform: scale(0.22) translateY(6px); }
+    .logo-wrapper.open .star-grid span { transform: translate(-50%, -50%) rotate(var(--angle)) translate(22px) rotate(var(--neg-angle)) scale(1); }
+    .nav-link { padding: 14px; font-size: 1rem; border-radius: 8px; }
+    .undermenu { font-size: 2.2rem; }
+}
+
+@media (max-width: 420px) {
+    .toolbar { height: 60px; padding: 8px; }
+    .logo-wrapper { width: 60px; height: 60px; }
+    .h1 { font-size: 1rem; }
+    .undermenu { font-size: 1.9rem; }
+    .welcome-text { font-size: 0.98rem; }
+}
