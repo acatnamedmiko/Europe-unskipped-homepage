@@ -7,6 +7,11 @@ function toggleMenu() {
     overlay.classList.toggle('open', isOpen);
     button && button.classList.toggle('open', isOpen);
     document.body.classList.toggle('menu-open', isOpen);
+    // accessibility: reflect state in ARIA attributes
+    try {
+        if (button) button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        if (drawer) drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    } catch (e) {}
 }
 
 // Ensure menu state is correct on load for desktop
