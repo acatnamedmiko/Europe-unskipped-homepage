@@ -1,4 +1,279 @@
-/* Import clean typography from Google Fonts */
+/* Import clean typography from Google Fonts (use a math-styled font for headings) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Inter:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.background {
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color: #E6EEF8;
+    overflow-x: hidden;
+    /* subtler, more classic background */
+    background: linear-gradient(180deg,#071029 0%, #0c1320 45%, #081020 100%);
+}
+
+/* Flexbox Header Alignment */
+.toolbar {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 120px);
+    max-width: 1200px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.02);
+    box-shadow: 0 6px 18px rgba(3,8,20,0.45);
+    z-index: 1000;
+    backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Interactive Logo Trigger Hook */
+.logo-wrapper {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: inline-grid;
+    place-items: center;
+    cursor: pointer;
+    background: linear-gradient(135deg,#2b6f78 0%, #145b7a 100%);
+    box-shadow: 0 6px 18px rgba(2,10,18,0.45);
+    transform-origin: center;
+    transition: transform 0.28s cubic-bezier(.2,.9,.2,1), filter 0.28s;
+}
+.logo-wrapper:hover { transform: scale(1.06); }
+
+/* Menu icon (three lines) and star grid (twelve stars) animation */
+.menu-icon {
+    width: 28px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.85);
+    transition: opacity 0.18s ease, transform 0.18s ease, background 0.18s ease;
+}
+.star-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.28) translateY(6px);
+    transition: opacity 0.3s ease, transform 0.36s ease;
+}
+.star-grid span {
+    --angle: 0deg;
+    --neg-angle: 0deg;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.9rem;
+    height: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: #d6c9a3; /* muted, warm tone */
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translate(14px) rotate(var(--neg-angle)) scale(0.9);
+    transition: opacity 0.22s ease, transform 0.32s ease;
+}
+.star-grid span:nth-child(1) { --angle: 0deg;   --neg-angle: 0deg; }
+.star-grid span:nth-child(2) { --angle: 30deg;  --neg-angle: -30deg; }
+.star-grid span:nth-child(3) { --angle: 60deg;  --neg-angle: -60deg; }
+.star-grid span:nth-child(4) { --angle: 90deg;  --neg-angle: -90deg; }
+.star-grid span:nth-child(5) { --angle: 120deg; --neg-angle: -120deg; }
+.star-grid span:nth-child(6) { --angle: 150deg; --neg-angle: -150deg; }
+.star-grid span:nth-child(7) { --angle: 180deg; --neg-angle: -180deg; }
+.star-grid span:nth-child(8) { --angle: 210deg; --neg-angle: -210deg; }
+.star-grid span:nth-child(9) { --angle: 240deg; --neg-angle: -240deg; }
+.star-grid span:nth-child(10){ --angle: 270deg; --neg-angle: -270deg; }
+.star-grid span:nth-child(11){ --angle: 300deg; --neg-angle: -300deg; }
+.star-grid span:nth-child(12){ --angle: 330deg; --neg-angle: -330deg; }
+.logo-wrapper.open .menu-icon span { opacity: 0; transform: translateY(-6px) scale(0.2); }
+.logo-wrapper.open .star-grid { opacity: 1; transform: scale(1) translateY(0); }
+.logo-wrapper.open .star-grid span { opacity: 1; transform: translate(-50%, -50%) rotate(var(--angle)) translate(28px) rotate(var(--neg-angle)) scale(1); }
+
+.logo { width:48px; height:48px; }
+
+/* Title Font Settings */
+.h1 {
+    color: #F8FBFF;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+}
+
+/* Main App Wrapper Entry Effect */
+.main-content {
+    margin-top: 140px;
+    margin-left: 20px; /* collapsed by default */
+    padding: 40px 36px;
+    animation: contentReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: margin-left 0.36s cubic-bezier(.2,.9,.2,1), padding 0.36s;
+}
+
+.undermenu {
+    font-size: 2.8rem;
+    line-height: 1.04;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #E6F6FF;
+}
+
+.welcome-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 760px;
+    color: rgba(230,240,250,0.9);
+}
+
+/* Animated Menu Drawer Panel */
+
+.menu-drawer {
+    position: fixed;
+    left: 22px;
+    top: 120px;
+    width: 300px;
+    height: calc(100% - 240px);
+    background: rgba(255,255,255,0.02);
+    border-radius: 16px;
+    padding: 20px;
+    z-index: 800;
+    box-shadow: 0 14px 40px rgba(2,6,23,0.45);
+    border: 1px solid rgba(255,255,255,0.02);
+    transform: translateX(-360px); /* hidden off-canvas by default */
+    opacity: 0; 
+    transition: transform 0.36s cubic-bezier(.25,.9,.2,1), opacity 0.28s;
+}
+
+.menu-drawer.open { transform: translateX(0); opacity:1; }
+
+@media (max-width: 900px) {
+    .menu-drawer { left: 8px; top: 80px; height: calc(100% - 160px); width: 280px; }
+}
+
+/* When menu is open (body class), push content to the right on large screens */
+body.menu-open .main-content {
+    margin-left: 360px;
+}
+
+@media (max-width: 900px) {
+    body.menu-open .main-content { margin-left: 20px; }
+    .menu-drawer { transform: translateX(0); opacity:1; left: 8px; }
+}
+
+@media (max-width: 1000px) {
+    .main-content { margin-left: 20px; padding: 20px; }
+}
+
+.drawer-header { margin-bottom: 16px; }
+.drawer-header h2 { color: #dff3ff; font-weight:700; font-size:1rem; letter-spacing:0.4px; }
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: #023E8A;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.close-btn:hover {
+    color: #FF006E;
+    transform: scale(1.15);
+}
+
+/* Staggered Content Animation for Navigation Items */
+.nav-list {
+    list-style: none;
+}
+
+.nav-item { margin-bottom: 18px; }
+
+/* Dynamic delays creates a flowing sequence waterfall */
+.menu-drawer.open .nav-item:nth-child(1) { transition-delay: 0.08s; }
+.menu-drawer.open .nav-item:nth-child(2) { transition-delay: 0.14s; }
+.menu-drawer.open .nav-item:nth-child(3) { transition-delay: 0.20s; }
+
+/* Navigation Links Style Details */
+.nav-link {
+    display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:10px; text-decoration:none;
+    background: rgba(255,255,255,0.01); color: #e6f3ff; border: 1px solid rgba(255,255,255,0.015);
+}
+.nav-link .nav-hint { background: #cfeff6; color:#07202a; font-weight:700; padding:5px 9px; border-radius:999px; }
+
+.nav-hint {
+    font-size: 0.78rem;
+    background-color: #E2EAFC;
+    color: #023E8A;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.nav-link:hover .nav-hint, .nav-link.active .nav-hint {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+
+/* Soft Backdrop Blur curtain */
+.menu-overlay { position: fixed; inset:0; pointer-events:none; opacity:0; transition:opacity 0.35s; }
+.menu-overlay.open { pointer-events:auto; opacity:1; background: rgba(3,6,18,0.35); }
+
+/* Drawer decorative outline */
+.menu-drawer::after { content:''; }
+
+/* Visual Keyframe Animations */
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Particle background for hero */
+.particles {
+    position: fixed; inset:0; z-index:50; pointer-events:none; overflow:hidden;
+}
+.particle { position:absolute; width:6px; height:6px; border-radius:50%; background:linear-gradient(90deg,#8fd3d6,#6aa6c8); opacity:0.12; transform:translate3d(0,0,0); }
+
+/* CTA */
+.cta {
+    display:inline-block; padding:10px 16px; border-radius:12px; font-weight:600; color:#04202a; background: linear-gradient(90deg,#bdeff6,#8fd3d6); box-shadow:0 6px 18px rgba(2,6,23,0.35);
+}
+
+/* Glass content card */
+.glass {
+    background: rgba(255,255,255,0.015);
+    border-radius: 10px; padding: 18px; border:1px solid rgba(255,255,255,0.02); box-shadow: 0 8px 30px rgba(2,6,23,0.35);
+}/* Import clean typography from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 
 * {
