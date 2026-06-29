@@ -5,6 +5,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Europe Unskipped - History</title>
         <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="background">
+
+        <header class="toolbar">
+            <div style="display:flex; align-items:center; gap:16px;"><div class="logo-wrapper" onclick="toggleMenu()" title="Open Navigation Menu" aria-label="Toggle navigation">
+                <div class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="star-grid" aria-hidden="true">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <h1 class="h1">Europe Unskipped</h1></div>
+        </header>
+
+        <div class="particles" id="particles"></div>
+
+        <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+        <nav id="menuDrawer" class="menu-drawer">
+            <div class="drawer-header">
+                <h2>Navigation</h2>
+                <button class="close-btn" onclick="toggleMenu()" aria-label="Close menu">&times;</button>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Homepage <span class="nav-hint">Go</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="history.html">History <span class="nav-hint">View</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="partners.html">Partners <span class="nav-hint">Open</span></a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section class="glass">
+                <h2 class="undermenu">History</h2>
+                <p class="welcome-text">Europe Unskipped began as a private hangout called "europe 1 2 skip a few" now we decided to make it a hangout. this time we wont be skipping on coutries</p>
+            </section>
+        </main>
+
+        <script src="code.js"></script>
+    </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Europe Unskipped - History</title>
+        <link rel="stylesheet" href="style.css">
         <style>
             body.background {
                 margin: 0;
